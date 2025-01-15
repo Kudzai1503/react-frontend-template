@@ -124,11 +124,11 @@ const chartConfig = {
         label: "Claims",
     },
     desktop: {
-        label: "EDI",
+        label: "Male",
         color: "hsl(var(--chart-1))",
     },
     mobile: {
-        label: "Paper",
+        label: "Female",
         color: "hsl(var(--chart-2))",
     },
 } satisfies ChartConfig
@@ -153,7 +153,7 @@ export function FunkyChart() {
         <Card>
             <CardHeader className="flex items-center gap-2 space-y-0 border-b py-5 sm:flex-row">
                 <div className="grid flex-1 gap-1 text-center sm:text-left">
-                    <CardTitle>Area Chart - Interactive</CardTitle>
+                    <CardTitle>Patient Visit</CardTitle>
                     <CardDescription>
                         Showing total visitors for the last 3 months
                     </CardDescription>

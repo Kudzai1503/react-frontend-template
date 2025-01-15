@@ -1,43 +1,42 @@
-import React from "react";
-import {Button} from "@/components/ui/button";
+import { useState } from "react"
+import { AnimatePresence } from "framer-motion"
+import HeroSection from "@/pages/auth/hero-section";
+import {AuthForm} from "@/pages/auth/auth-form";
 
-type Props ={}
+export default function Login() {
+    const [showSignUp, setShowSignUp] = useState(false)
 
-function Login({}:Props){
-    return(
-        <div className={"flex justify-center bg-zinc-300 w-screen h-screen "}>
-            <div className={"flex-1 flex items-center content-center justify-center bg-gradient-to-r from-emerald-200 from-10% via-green-100 via-30% to-emerald-500 to-90% ... "}>
-                LOGIN
+    const toggleSignUp = () => {
+        setShowSignUp(!showSignUp)
+    }
+
+    return (
+        <div className="flex min-h-screen">
+            <AnimatePresence initial={false} mode="wait">
+                {!showSignUp ? (
+                    <div key="hero" className="hidden lg:flex lg:w-1/2">
+                        <HeroSection />
+                    </div>
+                ) : (
+                    <div key="signup" className="flex w-full lg:w-1/2 items-center justify-center p-8">
+                        <AuthForm initialMode="signup" />
+                    </div>
+                )}
+            </AnimatePresence>
+            <div className="flex w-full lg:w-1/2 items-center justify-center p-8">
+                {!showSignUp ? (
+                    <AuthForm initialMode="signin" />
+                ) : (
+                    <HeroSection />
+                )}
             </div>
-            <div className={"flex-1 flex-col p-24 justify-center bg-zinc-100"} >
-                <div className={"flex flex-col w-3/4 space-y-6 "}>
-                    <p>LOGO</p>
-                    <div>
-                        <p className={"text-lg font-bold text-zinc-950"}>Hello Damba</p>
-                        <p className={"text-sm text-zinc-400"}>Lorem abfakljf lsafkljhjlejf hhfhhaghfa</p>
-                    </div>
-
-                    <div>
-                        <p className={"text-sm text-zinc-700"}> Email</p>
-                        <input/>
-                    </div>
-                    <div>
-                        <p className={"text-sm text-zinc-700"}> Password</p>
-                        <input/>
-                    </div>
-                    <div className={"flex flex-row space-x-4 "}>
-                        <p className={"text-zinc-400 text-xs"}>Forget Password</p>
-                        <p className={"text-zinc-400 text-xs"}>Forget Password</p>
-                    </div>
-                    <Button>ytgrfed</Button>
-                </div>
-
-            </div>
+            <button
+                onClick={toggleSignUp}
+                className="fixed bottom-4 right-4 bg-primary text-primary-foreground px-4 py-2 rounded-md"
+            >
+                {showSignUp ? "Back to Sign In" : "Sign Up"}
+            </button>
         </div>
-
-
     )
-
 }
 
-export default Login
