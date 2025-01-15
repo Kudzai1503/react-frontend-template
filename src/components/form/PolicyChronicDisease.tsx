@@ -242,7 +242,7 @@ export default function ChronicDiseaseForm() {
                                     <Textarea
                                         name="planDescription"
                                         placeholder="Plan Description"
-                                        onChange={(e) => handleNestedInputChange(e, 'treatmentPlan')}
+                                        // onChange={(e) => handleNestedInputChange(e, 'treatmentPlan')}
                                         value={formData.treatmentPlan?.planDescription || ''}
                                     />
                                 </div>
